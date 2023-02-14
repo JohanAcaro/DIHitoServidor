@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../database/Conexion');
+const bodyParser = require('body-parser');
 
 
 // Ruta raiz
@@ -25,20 +26,26 @@ router.get('/listar', (req, res) => {
     });
 });
 
+router.use(bodyParser.json());
+
 // POST: Crear datos
 router.post("/insertar", (req, res) => {
-    const { nombre, casa, edad, titulo } = req.body;
-    const sql = `INSERT INTO personaje (Nombre, Casa, Edad, Titulo) VALUES (?, ?, ?, ?)`;
-    const values = [nombre, casa, edad, titulo];
-    connection.query(sql, values, (err, result) => {
-      if (err) throw err;
-      res.send({ message: "Personaje añadido correctamente." });
-    });
+  const { id, nombre, casa, edad, titulo } = req.body;
+  const sql = 'INSERT INTO personaje (ID, Nombre, Casa, Edad, Titulo) VALUES (?,?, ?, ?, ?)';
+  const values = [id, nombre, casa, edad, titulo];
+  connection.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send({ message: 'Error al insertar el personaje' });
+    } else {
+      res.status(201).send({ message: 'Personaje añadido correctamente.' });
+    }
+  });
 });
+
 // PUT: Actualizar datos
-router.put("/editar/:id", (req, res) => {
-    const { id } = req.params;
-    const { nombre, casa, edad, titulo } = req.body;
+router.post("/editar", (req, res) => {
+    const { id, nombre, casa, edad, titulo } = req.body;
     const sql = `UPDATE personaje SET Nombre = ?, Casa = ?, Edad = ?, Titulo = ? WHERE ID = ?`;
     const values = [nombre, casa, edad, titulo, id];
     connection.query(sql, values, (err, result) => {
@@ -46,6 +53,8 @@ router.put("/editar/:id", (req, res) => {
       res.send({ message: "Personaje actualizado correctamente." });
     });
 });
+
+
 // DELETE: Eliminar datos
 router.delete("/eliminar/:id", (req, res) => {
     const { id } = req.params;
