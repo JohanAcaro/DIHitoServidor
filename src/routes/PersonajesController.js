@@ -11,8 +11,6 @@ router.get('/', (req, res) => {
 });
 
 
-
-
 // Metodos HTTP - CRUD
 // GET: Obtener datos
 // Obtener todos los productos de la base de datos
