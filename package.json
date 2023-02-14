@@ -1,0 +1,32 @@
+{
+  "name": "servidornode",
+  "version": "1.0.0",
+  "description": "servidor NodeJS de MySQL",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohanAcaro/DIHitoServidor.git"
+  },
+  "keywords": [
+    "servidor",
+    "node",
+    "mysql",
+    "api",
+    "express"
+  ],
+  "author": "Johan Estiben Acaro Masache",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohanAcaro/DIHitoServidor/issues"
+  },
+  "homepage": "https://github.com/JohanAcaro/DIHitoServidor#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.1.2"
+  }
+}
