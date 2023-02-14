@@ -1,3 +1,3 @@
 # ServidorNode
 
-API - Aplicacion Node Servidor con conexion a Mysql
+API - Aplicacion Node Servidor con conexión a Mysql
