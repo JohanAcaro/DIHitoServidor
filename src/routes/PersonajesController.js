@@ -24,6 +24,7 @@ router.get('/listar', (req, res) => {
     });
 });
 
+// Parsea el body de la petición a JSON
 router.use(bodyParser.json());
 
 // POST: Crear datos
@@ -41,7 +42,7 @@ router.post("/insertar", (req, res) => {
   });
 });
 
-// PUT: Actualizar datos
+// Post: Actualizar datos
 router.post("/editar", (req, res) => {
     const { id, nombre, casa, edad, titulo } = req.body;
     const sql = `UPDATE personaje SET Nombre = ?, Casa = ?, Edad = ?, Titulo = ? WHERE ID = ?`;
